@@ -41,7 +41,7 @@ namespace Utils
                     }
                     else if (cmd == "list")
                     {
-                        var codes = await service._client.GetSupportedCurrenciesAsync();
+                        var codes = await service.GetSupportedCurrenciesAsync();
                         Console.WriteLine(string.Join(", ", codes));
                     }
                     else

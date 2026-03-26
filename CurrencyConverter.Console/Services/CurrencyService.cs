@@ -1,7 +1,7 @@
 ﻿
 namespace Services
 {
-    public record ConvertionResult(decimal Rate, decimal ConvertedRate);
+    public record ConvertionResult(decimal Rate, decimal ConvertedAmount);
     
     public class CurrencyService
     {
@@ -21,6 +21,12 @@ namespace Services
             var converted = decimal.Round(amount * rate,4);
             return new ConvertionResult(rate, converted);
         }
+
+        public async Task<IEnumerable<string>> GetSupportedCurrenciesAsync()
+        {
+            return await _client.GetSupportedCurrenciesAsync();
+        }
+        
     }
 }
 
