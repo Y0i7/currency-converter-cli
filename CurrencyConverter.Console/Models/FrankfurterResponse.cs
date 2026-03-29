@@ -5,12 +5,12 @@ namespace Models
     public class FrankfurterResponse
     {
         [JsonPropertyName("base")]
-        public string Base { get; set; }
+        public required string Base { get; init; }
 
         [JsonPropertyName("date")]
-        public string Date { get; set; }
+        public required string Date { get; init; }
 
         [JsonPropertyName("rates")]
-        public Dictionary<string, decimal> Rates { get; set; }
+        public required Dictionary<string, decimal> Rates { get; init; }
     }
 }

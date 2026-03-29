@@ -5,6 +5,9 @@ namespace Services
     
     public class CurrencyService
     {
+        private const decimal _MinimumRate = 1m;
+        private const int _RequireDecimals = 4;
+        
         private readonly IExchangeClient _client;
 
         public CurrencyService(IExchangeClient client)
@@ -15,10 +18,10 @@ namespace Services
         public async Task<ConvertionResult> ConvertAsync(string from, string to, decimal amount)
         {
             if (from == to)
-                return new ConvertionResult(1m, amount);
+                return new ConvertionResult(_MinimumRate, amount);
 
             var rate = await _client.GetRateAsync(from, to);
-            var converted = decimal.Round(amount * rate,4);
+            var converted = decimal.Round(amount * rate, _RequireDecimals);
             return new ConvertionResult(rate, converted);
         }
 

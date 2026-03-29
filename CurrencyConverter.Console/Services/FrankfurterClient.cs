@@ -7,6 +7,7 @@ namespace  Services
     public class FrankfurterClient : IExchangeClient
     {
         private readonly HttpClient _http;
+        private const string _UrlForCurrenciesRequest = "currencies";
 
         private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
         {
@@ -28,13 +29,13 @@ namespace  Services
             var data = JsonSerializer.Deserialize<FrankfurterResponse>(json, _jsonOptions);
 
             if (data?.Rates == null || !data.Rates.ContainsKey(to))
-                throw new Exception("Invalid rate");
+                throw new InvalidOperationException("Exchange rate not available.");
             return data.Rates[to];
         }
 
         public async Task<IEnumerable<string>> GetSupportedCurrenciesAsync()
         {
-            var resp = await _http.GetAsync("currencies");
+            var resp = await _http.GetAsync(_UrlForCurrenciesRequest);
             resp.EnsureSuccessStatusCode();
 
             var json = await resp.Content.ReadAsStringAsync();
