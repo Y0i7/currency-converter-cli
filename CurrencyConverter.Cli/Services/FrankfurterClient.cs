@@ -1,13 +1,13 @@
 ﻿
 using System.Text.Json;
-using Models;
+using CurrencyConverter.Cli.Models;
 
-namespace  Services
+namespace CurrencyConverter.Cli.Services
 {
     public class FrankfurterClient : IExchangeClient
     {
         private readonly HttpClient _http;
-        private const string _UrlForCurrenciesRequest = "currencies";
+        private const string UrlForCurrenciesRequest = "currencies";
 
         private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
         {
@@ -35,7 +35,7 @@ namespace  Services
 
         public async Task<IEnumerable<string>> GetSupportedCurrenciesAsync()
         {
-            var resp = await _http.GetAsync(_UrlForCurrenciesRequest);
+            var resp = await _http.GetAsync(UrlForCurrenciesRequest);
             resp.EnsureSuccessStatusCode();
 
             var json = await resp.Content.ReadAsStringAsync();

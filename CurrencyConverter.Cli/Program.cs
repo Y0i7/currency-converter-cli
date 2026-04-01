@@ -1,14 +1,14 @@
 ﻿using CurrencyConverter.Cli.Resources;
 using Microsoft.Extensions.Configuration;
-using Services;
-using Utils;
+using CurrencyConverter.Cli.Services;
+using CurrencyConverter.Cli.Utils;
 
 namespace CurrencyConverter.Cli
 {
-    static class Program
+    public static class Program
     {
-        private const string _JsonConfigFile = "appsettings.json";
-        private const int _MaxConvertLenght = 4;
+        private const string JsonConfigFile = "appsettings.json";
+        private const int MaxConvertLenght = 4;
 
         private static async Task<int> Main(string[] args)
         {
@@ -23,11 +23,11 @@ namespace CurrencyConverter.Cli
 
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(_JsonConfigFile, optional: false, reloadOnChange: true)
+                .AddJsonFile(JsonConfigFile, optional: false, reloadOnChange: true)
                 .Build();
 
             var baseUrl = config["ApiSettings:BaseUrl"]
-                ?? throw new Exception("BaseUrl not configured");
+                ?? throw new InvalidOperationException("BaseUrl not configured");
 
             using var http = new System.Net.Http.HttpClient
             {
@@ -50,7 +50,7 @@ namespace CurrencyConverter.Cli
             {
                 switch (cmd)
                 {
-                    case "convert" when args.Length - startIndex == _MaxConvertLenght:
+                    case "convert" when args.Length - startIndex == MaxConvertLenght:
                     {
                         var from = args[startIndex + 1].ToUpperInvariant();
                         var to = args[startIndex + 2].ToUpperInvariant();

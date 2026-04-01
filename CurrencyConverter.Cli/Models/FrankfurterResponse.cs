@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Models
+namespace CurrencyConverter.Cli.Models
 {
     public class FrankfurterResponse
     {

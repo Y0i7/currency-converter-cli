@@ -1,5 +1,5 @@
 ﻿
-namespace Services
+namespace CurrencyConverter.Cli.Services
 {
     public interface IExchangeClient
     {

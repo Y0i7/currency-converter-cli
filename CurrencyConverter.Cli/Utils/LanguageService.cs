@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Utils
+namespace CurrencyConverter.Cli.Utils
 {
     public static class LanguageService
     {
