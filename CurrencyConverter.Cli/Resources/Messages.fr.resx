@@ -13,4 +13,6 @@
     <data name="NoArgs"><value>(Sans arguments) Mode interactif</value></data>
     <data name="UnsupportedCultureMessage"><value>Culture non prise en charge :</value></data>
     <data name="ChangedLanguage"><value>Langue changée en :</value></data>
+    <data name="ReadingIndicator"><value>> </value></data>
+    <data name="ErrorMessage"><value>Erreur : </value></data>
 </root>

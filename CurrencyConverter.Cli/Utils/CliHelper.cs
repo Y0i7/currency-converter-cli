@@ -7,11 +7,12 @@ namespace CurrencyConverter.Cli.Utils
 {
     public static class CliHelper
     {
+        private const int LanguageColumnWidth = -6;
         public static async Task ReplAsync(CurrencyService service)
         {
             while (true)
             {
-                Console.Write("> ");
+                Console.Write(Messages.ReadingIndicator);
                 var commandLine = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(commandLine)) continue;
@@ -41,8 +42,11 @@ namespace CurrencyConverter.Cli.Utils
                     return true;
 
                 case "languages":
-                    foreach (var language in LanguageService.Languages)
-                        Console.WriteLine($"{language.Key,-6} -> lang {language.Key}");
+                    var lines = LanguageService.Languages
+                        .Select(language => $"{language.Key,LanguageColumnWidth} -> lang {language.Key}");
+
+                    foreach (var line in lines)
+                        Console.WriteLine(line);
                     return true;
 
                 case "lang" when commandParts.Length >= 2:
@@ -75,7 +79,7 @@ namespace CurrencyConverter.Cli.Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine(Messages.ErrorMessage + ex.Message);
             }
         }
 
@@ -102,8 +106,11 @@ namespace CurrencyConverter.Cli.Utils
             var toFormatted = MoneyFormatter.Format(result.ConvertedAmount, to, CultureInfo.CurrentCulture);
 
             Console.WriteLine(
-                $"{fromFormatted} = {toFormatted} (rate {result.Rate.ToString("N4")})"
-            );
+                Messages.ConversionResult,
+                fromFormatted,
+                toFormatted,
+                result.Rate.ToString("N4")
+                );
         }
 
         private static async Task HandleList(CurrencyService service)
