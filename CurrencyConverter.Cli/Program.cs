@@ -10,7 +10,7 @@ namespace CurrencyConverter.Cli
     public static class Program
     {
         private const string JsonConfigFile = "appsettings.json";
-        private const int MaxConvertLenght = 4;
+        private const int MaxConvertLength = 4;
 
         private static async Task<int> Main(string[] args)
         {
@@ -31,7 +31,7 @@ namespace CurrencyConverter.Cli
             var baseUrl = config["ApiSettings:BaseUrl"]
                 ?? throw new InvalidOperationException("BaseUrl not configured");
 
-            using var http = new System.Net.Http.HttpClient
+            using var http = new HttpClient
             {
                 BaseAddress = new Uri(baseUrl)
             };
@@ -41,7 +41,7 @@ namespace CurrencyConverter.Cli
             
             if (args.Length == 0 || args.Length <= startIndex)
             {
-                Console.WriteLine($"{Messages.ApplicationName}\n\n{Messages.ApplicationHelpMessage}");
+                Console.WriteLine($"{Messages.ApplicationName}{Messages.ApplicationHelpMessage}");
                 await CliHelper.ReplAsync(currencyService);
                 return 0;
             }
@@ -52,7 +52,7 @@ namespace CurrencyConverter.Cli
             {
                 switch (cmd)
                 {
-                    case "convert" when args.Length - startIndex == MaxConvertLenght:
+                    case "convert" when args.Length - startIndex == MaxConvertLength:
                     {
                         var from = args[startIndex + 1].ToUpperInvariant();
                         var to = args[startIndex + 2].ToUpperInvariant();
@@ -69,7 +69,10 @@ namespace CurrencyConverter.Cli
                         var toFormatted = MoneyFormatter.Format(result.ConvertedAmount, to, CultureInfo.CurrentCulture);
 
                         Console.WriteLine(
-                            $"{fromFormatted} = {toFormatted} (rate {result.Rate.ToString("N4")})"
+                            Messages.ConversionResult,
+                            fromFormatted,
+                            toFormatted,
+                            result.Rate.ToString("N4")
                         );
                         break;
                     }
@@ -100,7 +103,7 @@ namespace CurrencyConverter.Cli
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine(Messages.ErrorMessage + ex.Message);
                 return 1;
             }
 

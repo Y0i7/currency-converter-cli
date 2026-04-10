@@ -87,11 +87,29 @@ namespace CurrencyConverter.Cli.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  {0} = {1} (rate {2}) .
+        /// </summary>
+        internal static string ConversionResult {
+            get {
+                return ResourceManager.GetString("ConversionResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to convert &lt;FROM&gt; &lt;TO&gt; &lt;AMOUNT&gt;.
         /// </summary>
         internal static string ConvertUsage {
             get {
                 return ResourceManager.GetString("ConvertUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error:  .
+        /// </summary>
+        internal static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
             }
         }
         
@@ -155,6 +173,15 @@ namespace CurrencyConverter.Cli.Resources {
         internal static string NoRecognizedCommand {
             get {
                 return ResourceManager.GetString("NoRecognizedCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt; .
+        /// </summary>
+        internal static string ReadingIndicator {
+            get {
+                return ResourceManager.GetString("ReadingIndicator", resourceCulture);
             }
         }
         

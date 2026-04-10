@@ -71,4 +71,16 @@
         <value>Language changed to:</value>
     </data>
     
+    <data name="ReadingIndicator" xml:space="preserve">
+        <value>> </value>
+    </data>
+    
+    <data name="ErrorMessage" xml:space="preserve">
+        <value>Error:  </value>
+    </data>
+    
+    <data name="ConversionResult" xml:space="preserve">
+        <value> {0} = {1} (rate {2}) </value>
+    </data>
+    
 </root>

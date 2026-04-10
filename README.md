@@ -96,7 +96,19 @@ dotnet run -- convert USD EUR 100
 **Example Output:**
 
 ```text
-100 USD = 92 EUR (rate 0.92)
+$ 100,00 USD = $ 85,39 EUR (rate 0,8539)
+```
+
+### 🌍 Convert currencies + language
+
+```bash
+dotnet run -- --lang es-ES convert USD CAD 100
+```
+
+**Example Output:**
+
+```text
+€ 100,00 EUR = € 161,87 CAD (rate 1,6187)
 ```
 
 ---
@@ -127,9 +139,23 @@ dotnet run -- help
 Commands:
   convert <FROM> <TO> <AMOUNT>
   list
+  languages
+  lang <CULTURA>
   (no args) interactive mode
 ```
 
+**Language Support**
+
+You can run commands in different languages using the --lang option.
+
+```text
+es-CO  (Spanish - Colombia)
+es     (Spanish - General)
+es-ES  (Spanish - Spain)
+en-US  (English)
+fr-FR  (French)
+zh-CN  (Chinese)
+```
 ---
 
 ### 🔹 Interactive mode
@@ -154,11 +180,21 @@ Then type:
 ## 🧠 Architecture Overview
 
 ```
-Program.cs        → Application entry point
-Services/         → Business logic
-Clients/          → External API communication
-Models/           → Data structures
-Utils/            → CLI helper logic
+Program.cs        → Entry point
+
+Core:
+  Services/       → Business logic
+  Models/         → Domain & data structures
+
+Infrastructure:
+  Clients/        → External API communication
+
+Presentation:
+  Utils/          → CLI logic (commands, REPL)
+  Resources/      → Localization (.resx)
+
+Shared:
+  Helpers/        → Utilities (formatting, helpers)
 ```
 
 ---

@@ -13,4 +13,6 @@
     <data name="NoArgs"><value>（无参数）交互模式</value></data>
     <data name="UnsupportedCultureMessage"><value>不支持的语言：</value></data>
     <data name="ChangedLanguage"><value>语言已切换为：</value></data>
+    <data name="ReadingIndicator"><value>> </value></data>
+    <data name="ErrorMessage"><value>错误： </value></data>
 </root>
