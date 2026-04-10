@@ -1,5 +1,7 @@
-﻿using CurrencyConverter.Cli.Resources;
+﻿using System.Globalization;
+using CurrencyConverter.Cli.Resources;
 using CurrencyConverter.Cli.Services;
+using CurrencyConverter.Cli.Helpers;
 
 namespace CurrencyConverter.Cli.Utils
 {
@@ -10,18 +12,18 @@ namespace CurrencyConverter.Cli.Utils
             while (true)
             {
                 Console.Write("> ");
-                var line = Console.ReadLine();
+                var commandLine = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(commandLine)) continue;
 
-                var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                var cmd = parts[0].ToLowerInvariant();
+                var commandParts = commandLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                var cmd = commandParts[0].ToLowerInvariant();
 
                 if (HandleExit(cmd)) break;
 
-                if (await HandleSpecialCommands(cmd, parts)) continue;
+                if (HandleSpecialCommands(cmd, commandParts)) continue;
 
-                await HandleCommandAsync(cmd, parts, service);
+                await HandleCommandAsync(cmd, commandParts, service);
             }
         }
 
@@ -30,16 +32,23 @@ namespace CurrencyConverter.Cli.Utils
             return cmd is "exit" or "quit";
         }
 
-        private static async Task<bool> HandleSpecialCommands(string cmd, string[] parts)
+        private static bool HandleSpecialCommands(string cmd, string[] commandParts)
         {
             switch (cmd)
             {
                 case "help":
                     ShowHelp();
                     return true;
-                case "lang" when parts.Length >= 2:
-                    ChangeLanguage(parts[1]);
+
+                case "languages":
+                    foreach (var language in LanguageService.Languages)
+                        Console.WriteLine($"{language.Key,-6} -> lang {language.Key}");
                     return true;
+
+                case "lang" when commandParts.Length >= 2:
+                    ChangeLanguage(commandParts[1]);
+                    return true;
+
                 default:
                     return false;
             }
@@ -89,7 +98,12 @@ namespace CurrencyConverter.Cli.Utils
 
             var result = await service.ConvertAsync(from, to, amount);
 
-            Console.WriteLine($"{amount:C2} {from} = {result.ConvertedAmount:C2} {to} (rate {result.Rate:C2})");
+            var fromFormatted = MoneyFormatter.Format(amount, from, CultureInfo.CurrentCulture);
+            var toFormatted = MoneyFormatter.Format(result.ConvertedAmount, to, CultureInfo.CurrentCulture);
+
+            Console.WriteLine(
+                $"{fromFormatted} = {toFormatted} (rate {result.Rate.ToString("N4")})"
+            );
         }
 
         private static async Task HandleList(CurrencyService service)
@@ -105,6 +119,9 @@ namespace CurrencyConverter.Cli.Utils
             Console.WriteLine(Messages.HelpHeader);
             Console.WriteLine(Messages.ConvertUsage);
             Console.WriteLine(Messages.ListUsage);
+            Console.WriteLine(Messages.LanguagesUsage);
+            Console.WriteLine(Messages.LangUsage);
+            Console.WriteLine(Messages.NoArgs);
         }
 
         private static void ChangeLanguage(string lang)
@@ -112,11 +129,11 @@ namespace CurrencyConverter.Cli.Utils
             try
             {
                 LanguageService.SetLanguage(lang);
-                Console.WriteLine($"Language changed to: {lang}");
+                Console.WriteLine($"{Messages.ChangedLanguage} {lang}");
             }
             catch
             {
-                Console.WriteLine("Invalid language");
+                Console.WriteLine($"{Messages.UnsupportedCultureMessage} {lang}");
             }
         }
     }

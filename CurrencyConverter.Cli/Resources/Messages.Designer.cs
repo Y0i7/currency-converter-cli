@@ -78,6 +78,15 @@ namespace CurrencyConverter.Cli.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language changed to:.
+        /// </summary>
+        internal static string ChangedLanguage {
+            get {
+                return ResourceManager.GetString("ChangedLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to convert &lt;FROM&gt; &lt;TO&gt; &lt;AMOUNT&gt;.
         /// </summary>
         internal static string ConvertUsage {
@@ -101,6 +110,24 @@ namespace CurrencyConverter.Cli.Resources {
         internal static string InvalidAmount {
             get {
                 return ResourceManager.GetString("InvalidAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to languages.
+        /// </summary>
+        internal static string LanguagesUsage {
+            get {
+                return ResourceManager.GetString("LanguagesUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  lang &lt;CULTURE&gt; .
+        /// </summary>
+        internal static string LangUsage {
+            get {
+                return ResourceManager.GetString("LangUsage", resourceCulture);
             }
         }
         
@@ -137,6 +164,15 @@ namespace CurrencyConverter.Cli.Resources {
         internal static string SupportedCurrencies {
             get {
                 return ResourceManager.GetString("SupportedCurrencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported culture:.
+        /// </summary>
+        internal static string UnsupportedCultureMessage {
+            get {
+                return ResourceManager.GetString("UnsupportedCultureMessage", resourceCulture);
             }
         }
     }

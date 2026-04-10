@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="ApplicationName"><value>Convertisseur de Devises CLI</value></data>
+    <data name="ApplicationHelpMessage"><value>Tapez 'help' pour voir les commandes.</value></data>
+    <data name="InvalidAmount"><value>Montant invalide</value></data>
+    <data name="HelpHeader"><value>Commandes disponibles :</value></data>
+    <data name="ConvertUsage"><value>convert &lt;DE&gt; &lt;VERS&gt; &lt;MONTANT&gt;</value></data>
+    <data name="ListUsage"><value>list</value></data>
+    <data name="NoRecognizedCommand"><value>Commande non reconnue. Tapez 'help'.</value></data>
+    <data name="SupportedCurrencies"><value>Devises disponibles :</value></data>
+    <data name="LanguagesUsage"><value>languages</value></data>
+    <data name="LangUsage"><value>lang &lt;CULTURE&gt;</value></data>
+    <data name="NoArgs"><value>(Sans arguments) Mode interactif</value></data>
+    <data name="UnsupportedCultureMessage"><value>Culture non prise en charge :</value></data>
+    <data name="ChangedLanguage"><value>Langue changée en :</value></data>
+</root>

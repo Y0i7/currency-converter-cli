@@ -1,4 +1,6 @@
-﻿using CurrencyConverter.Cli.Resources;
+﻿using System.Globalization;
+using CurrencyConverter.Cli.Helpers;
+using CurrencyConverter.Cli.Resources;
 using Microsoft.Extensions.Configuration;
 using CurrencyConverter.Cli.Services;
 using CurrencyConverter.Cli.Utils;
@@ -63,7 +65,12 @@ namespace CurrencyConverter.Cli
 
                         var result = await currencyService.ConvertAsync(from, to, amount);
 
-                        Console.WriteLine($"{amount:C} {from} = {result.ConvertedAmount:C2} {to} (rate {result.Rate:C2})");
+                        var fromFormatted = MoneyFormatter.Format(amount, from, CultureInfo.CurrentCulture);
+                        var toFormatted = MoneyFormatter.Format(result.ConvertedAmount, to, CultureInfo.CurrentCulture);
+
+                        Console.WriteLine(
+                            $"{fromFormatted} = {toFormatted} (rate {result.Rate.ToString("N4")})"
+                        );
                         break;
                     }
 
@@ -80,6 +87,8 @@ namespace CurrencyConverter.Cli
                         Console.WriteLine(Messages.HelpHeader);
                         Console.WriteLine(Messages.ConvertUsage);
                         Console.WriteLine(Messages.ListUsage);
+                        Console.WriteLine(Messages.LanguagesUsage);
+                        Console.WriteLine(Messages.LangUsage);
                         Console.WriteLine(Messages.NoArgs);
                         break;
                     }

@@ -51,8 +51,24 @@
         <value>Supported currencies:</value>
     </data>
     
+    <data name="LanguagesUsage" xml:space="preserve">
+        <value>languages</value>
+    </data>
+    
+    <data name="LangUsage" xml:space="preserve">
+        <value> lang &lt;CULTURE&gt; </value>
+    </data>
+
     <data name="NoArgs" xml:space="preserve">
         <value>(No args) Interactive Mode</value>
+    </data>
+    
+    <data name="UnsupportedCultureMessage" xml:space="preserve">
+        <value>Unsupported culture:</value>
+    </data>
+    
+    <data name="ChangedLanguage" xml:space="preserve">
+        <value>Language changed to:</value>
     </data>
     
 </root>

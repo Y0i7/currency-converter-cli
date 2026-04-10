@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="ApplicationName"><value>Currency Converter CLI</value></data>
+    <data name="ApplicationHelpMessage"><value>Type 'help' for available commands.</value></data>
+    <data name="InvalidAmount"><value>Invalid amount</value></data>
+    <data name="HelpHeader"><value>Available commands:</value></data>
+    <data name="ConvertUsage"><value>convert &lt;FROM&gt; &lt;TO&gt; &lt;AMOUNT&gt;</value></data>
+    <data name="ListUsage"><value>list</value></data>
+    <data name="NoRecognizedCommand"><value>Command not recognized. Type 'help'.</value></data>
+    <data name="SupportedCurrencies"><value>Supported currencies:</value></data>
+    <data name="LanguagesUsage"><value>languages</value></data>
+    <data name="LangUsage"><value>lang &lt;CULTURE&gt;</value></data>
+    <data name="NoArgs"><value>(No args) Interactive mode</value></data>
+    <data name="UnsupportedCultureMessage"><value>Unsupported culture:</value></data>
+    <data name="ChangedLanguage"><value>Language changed to:</value></data>
+</root>
