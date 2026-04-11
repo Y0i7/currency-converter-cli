@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using CurrencyConverter.Cli.Resources;
 using CurrencyConverter.Cli.Services;
-using CurrencyConverter.Cli.Helpers;
 
 namespace CurrencyConverter.Cli.Utils
 {
@@ -25,6 +24,7 @@ namespace CurrencyConverter.Cli.Utils
                 if (HandleSpecialCommands(cmd, commandParts)) continue;
 
                 await HandleCommandAsync(cmd, commandParts, service);
+
             }
         }
 
@@ -35,6 +35,7 @@ namespace CurrencyConverter.Cli.Utils
 
         private static bool HandleSpecialCommands(string cmd, string[] commandParts)
         {
+            Console.Clear();
             switch (cmd)
             {
                 case "help":
@@ -60,6 +61,7 @@ namespace CurrencyConverter.Cli.Utils
 
         private static async Task HandleCommandAsync(string cmd, string[] parts, CurrencyService service)
         {
+            Console.Clear();
             try
             {
                 switch (cmd)
@@ -85,6 +87,7 @@ namespace CurrencyConverter.Cli.Utils
 
         private static async Task HandleConvert(string[] parts, CurrencyService service)
         {
+            Console.Clear();
             if (parts.Length != 4)
             {
                 Console.WriteLine(Messages.ConvertUsage);
@@ -115,6 +118,7 @@ namespace CurrencyConverter.Cli.Utils
 
         private static async Task HandleList(CurrencyService service)
         {
+            Console.Clear();
             var codes = await service.GetSupportedCurrenciesAsync();
 
             Console.WriteLine(Messages.SupportedCurrencies);
@@ -123,6 +127,7 @@ namespace CurrencyConverter.Cli.Utils
 
         private static void ShowHelp()
         {
+            Console.Clear();
             Console.WriteLine(Messages.HelpHeader);
             Console.WriteLine(Messages.ConvertUsage);
             Console.WriteLine(Messages.ListUsage);
@@ -136,11 +141,15 @@ namespace CurrencyConverter.Cli.Utils
             try
             {
                 LanguageService.SetLanguage(lang);
-                Console.WriteLine($"{Messages.ChangedLanguage} {lang}");
+                Console.WriteLine(
+                    Messages.ChangedLanguage,
+                    lang);
             }
             catch
             {
-                Console.WriteLine($"{Messages.UnsupportedCultureMessage} {lang}");
+                Console.WriteLine(
+                    Messages.UnsupportedCultureMessage,
+                    lang);
             }
         }
     }

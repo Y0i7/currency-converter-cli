@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <data name="ApplicationName"><value>货币转换 CLI</value></data>
-    <data name="ApplicationHelpMessage"><value>输入 'help' 查看命令。</value></data>
+    <data name="AppPresentation"><value>货币转换 CLI\n\n输入 'help' 查看命令。</value></data>
     <data name="InvalidAmount"><value>金额无效</value></data>
     <data name="HelpHeader"><value>可用命令：</value></data>
     <data name="ConvertUsage"><value>convert &lt;来源&gt; &lt;目标&gt; &lt;金额&gt;</value></data>
@@ -11,8 +10,9 @@
     <data name="LanguagesUsage"><value>languages</value></data>
     <data name="LangUsage"><value>lang &lt;语言&gt;</value></data>
     <data name="NoArgs"><value>（无参数）交互模式</value></data>
-    <data name="UnsupportedCultureMessage"><value>不支持的语言：</value></data>
-    <data name="ChangedLanguage"><value>语言已切换为：</value></data>
+    <data name="UnsupportedCultureMessage"><value>不支持的语言：{0}</value></data>
+    <data name="ChangedLanguage"><value>语言已切换为：{0}</value></data>
     <data name="ReadingIndicator"><value>> </value></data>
     <data name="ErrorMessage"><value>错误： </value></data>
+    <data name="ConversionResult"><value>{0} = {1} (速度 {2})</value></data>
 </root>

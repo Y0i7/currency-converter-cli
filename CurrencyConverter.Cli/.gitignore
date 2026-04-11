@@ -1,6 +1,12 @@
-﻿# Build
+﻿# =========================
+# 🔧 Build outputs
+# =========================
 bin/
 obj/
+
+# =========================
+# 🧠 IDE / Editors
+# =========================
 
 # Rider
 .idea/
@@ -8,13 +14,48 @@ obj/
 # VS Code
 .vscode/
 
-# User files
+# Visual Studio
+.vs/
+
+# =========================
+# 👤 User-specific files
+# =========================
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
 
-# Logs
+# =========================
+# 📦 NuGet
+# =========================
+*.nupkg
+*.snupkg
+packages/
+
+# =========================
+# 📄 Logs
+# =========================
 *.log
 
-# OS
+# =========================
+# 💻 OS files
+# =========================
+
+# macOS
 .DS_Store
+
+# Windows
 Thumbs.db
+
+# =========================
+# 🔐 Environment / Secrets
+# =========================
+appsettings.Development.json
+.env
+.env.*
+
+# =========================
+# 🧪 Test / coverage (optional)
+# =========================
+TestResults/
+coverage/

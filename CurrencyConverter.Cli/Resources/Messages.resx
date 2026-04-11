@@ -19,14 +19,10 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     
-    <data name="ApplicationName" xml:space="preserve">
-        <value>Currency Converter CLI</value>
+    <data name="AppPresentation" xml:space="preserve">
+        <value>Currency Converter CLI \n\nType 'help' for commands.</value>
     </data>
-    
-    <data name="ApplicationHelpMessage" xml:space="preserve">
-        <value>Type 'help' for commands.</value>
-    </data>
-    
+   
     <data name="InvalidAmount" xml:space="preserve">
         <value>Invalid amount specified</value>
     </data>
@@ -64,11 +60,11 @@
     </data>
     
     <data name="UnsupportedCultureMessage" xml:space="preserve">
-        <value>Unsupported culture:</value>
+        <value>Unsupported culture: {0}</value>
     </data>
     
     <data name="ChangedLanguage" xml:space="preserve">
-        <value>Language changed to:</value>
+        <value>Language changed to: {0}</value>
     </data>
     
     <data name="ReadingIndicator" xml:space="preserve">

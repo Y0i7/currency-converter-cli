@@ -60,25 +60,16 @@ namespace CurrencyConverter.Cli.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type &apos;help&apos; for commands..
+        ///   Looks up a localized string similar to Currency Converter CLI \n\nType &apos;help&apos; for commands..
         /// </summary>
-        internal static string ApplicationHelpMessage {
+        internal static string AppPresentation {
             get {
-                return ResourceManager.GetString("ApplicationHelpMessage", resourceCulture);
+                return ResourceManager.GetString("AppPresentation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Currency Converter CLI.
-        /// </summary>
-        internal static string ApplicationName {
-            get {
-                return ResourceManager.GetString("ApplicationName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language changed to:.
+        ///   Looks up a localized string similar to Language changed to: {0}.
         /// </summary>
         internal static string ChangedLanguage {
             get {
@@ -195,7 +186,7 @@ namespace CurrencyConverter.Cli.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported culture:.
+        ///   Looks up a localized string similar to Unsupported culture: {0}.
         /// </summary>
         internal static string UnsupportedCultureMessage {
             get {
