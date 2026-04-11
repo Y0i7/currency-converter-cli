@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <data name="ApplicationName"><value>Convertidor de Monedas CLI</value></data>
-    <data name="ApplicationHelpMessage"><value>Escribe 'help' para ver los comandos.</value></data>
+    <data name="AppPresentation"><value>Convertidor de Monedas CLI\n\nEscribe 'help' para ver los comandos.</value></data>
     <data name="InvalidAmount"><value>Cantidad inválida</value></data>
     <data name="HelpHeader"><value>Comandos disponibles:</value></data>
     <data name="ConvertUsage"><value>convert &lt;ORIGEN&gt; &lt;DESTINO&gt; &lt;CANTIDAD&gt;</value></data>
@@ -11,8 +10,9 @@
     <data name="LanguagesUsage"><value>languages</value></data>
     <data name="LangUsage"><value>lang &lt;CULTURA&gt;</value></data>
     <data name="NoArgs"><value>(Sin argumentos) Modo interactivo</value></data>
-    <data name="UnsupportedCultureMessage"><value>Cultura no soportada:</value></data>
-    <data name="ChangedLanguage"><value>Idioma cambiado a:</value></data>
+    <data name="UnsupportedCultureMessage"><value>Cultura no soportada: {0}</value></data>
+    <data name="ChangedLanguage"><value>Idioma cambiado a: {0}</value></data>
     <data name="ReadingIndicator"><value>> </value></data>
     <data name="ErrorMessage"><value>Error : </value></data>
+    <data name="ConversionResult"><value>{0} = {1} (tasa {2})</value></data>
 </root>

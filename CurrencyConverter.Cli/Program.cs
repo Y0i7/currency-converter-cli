@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using CurrencyConverter.Cli.Helpers;
 using CurrencyConverter.Cli.Resources;
 using Microsoft.Extensions.Configuration;
 using CurrencyConverter.Cli.Services;
@@ -31,17 +30,14 @@ namespace CurrencyConverter.Cli
             var baseUrl = config["ApiSettings:BaseUrl"]
                 ?? throw new InvalidOperationException("BaseUrl not configured");
 
-            using var http = new HttpClient
-            {
-                BaseAddress = new Uri(baseUrl)
-            };
+            var http = HttpClientProvider.GetHttpClient(baseUrl);
 
             IExchangeClient client = new FrankfurterClient(http);
             var currencyService = new CurrencyService(client);
             
             if (args.Length == 0 || args.Length <= startIndex)
             {
-                Console.WriteLine($"{Messages.ApplicationName}{Messages.ApplicationHelpMessage}");
+                Console.WriteLine(Messages.AppPresentation);
                 await CliHelper.ReplAsync(currencyService);
                 return 0;
             }

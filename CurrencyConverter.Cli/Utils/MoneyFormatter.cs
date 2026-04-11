@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace CurrencyConverter.Cli.Helpers
+namespace CurrencyConverter.Cli.Utils
 {
     public static class MoneyFormatter
     {

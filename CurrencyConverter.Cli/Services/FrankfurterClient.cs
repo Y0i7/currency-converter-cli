@@ -39,8 +39,11 @@ namespace CurrencyConverter.Cli.Services
             resp.EnsureSuccessStatusCode();
 
             var json = await resp.Content.ReadAsStringAsync();
-            var map = JsonSerializer.Deserialize<Dictionary<string,string>>(json, _jsonOptions);
-            return (IEnumerable<string>)map?.Keys.OrderBy(k => k) ?? [];
+            
+            return (JsonSerializer.Deserialize<Dictionary<string, string>>(json, _jsonOptions)
+                    ?? new Dictionary<string, string>())
+                .Keys
+                .OrderBy(k => k);
         }
     }
 }
